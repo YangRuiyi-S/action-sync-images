@@ -26,9 +26,10 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: |
-K8SVERSION=1.27.4
-DOCKER_HUBUSERURL=docker.io/weiyigeek
-kubeadm config images list --kubernetes-version=${K8SVERSION} 2>/dev/null > K8sv1.27.4.txt
-for i in `cat K8sv1.27.4.txt`;do
-  echo skopeo copy --all docker://${i} docker://${DOCKER_HUBUSERURL}/${i##*/}
-done
+     /usr/bin/env bash 
+     K8SVERSION=1.27.4
+     DOCKER_HUBUSERURL=docker.io/weiyigeek
+     kubeadm config images list --kubernetes-version=${K8SVERSION} 2>/dev/null > K8sv1.27.4.txt
+     for i in `cat K8sv1.27.4.txt`;do
+     echo skopeo copy --all docker://${i} docker://${DOCKER_HUBUSERURL}/${i##*/}
+     done
