@@ -33,7 +33,7 @@ jobs:
       - name: Run a multi-line script
       - run: npm install -g bats
       - run: bats -v
-      - run: |
+        run: |
           #!/usr/bin/env bash
           K8SVERSION=1.27.4
           DOCKER_HUBUSERURL=docker.io/YangRuiyi-S
